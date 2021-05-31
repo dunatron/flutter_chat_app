@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 
 import '../pickers/user_image_picker.dart';
 
@@ -70,6 +70,9 @@ class _AuthFormState extends State<AuthForm> {
                 children: <Widget>[
                   if (_isLogin == false) UserImagePicker(_pickedImage),
                   TextFormField(
+                    autocorrect: false,
+                    textCapitalization: TextCapitalization.none,
+                    enableSuggestions: false,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(labelText: 'Email address'),
                     validator: (value) {
@@ -84,6 +87,9 @@ class _AuthFormState extends State<AuthForm> {
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Username'),
+                    autocorrect: true,
+                    textCapitalization: TextCapitalization.words,
+                    enableSuggestions: false,
                     validator: (value) {
                       if (value.isEmpty || value.length < 4) {
                         return 'Please enter at lease 4 characters';
